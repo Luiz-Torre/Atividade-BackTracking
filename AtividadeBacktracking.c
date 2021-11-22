@@ -21,8 +21,8 @@ void imprimirCombinacoes(char* vet, int pos, int n){
             else {contadorI++;}
         }
         if(contadorA > (contadorI+contadorE)){
-            for (int j = 0; j < n; ++j) {
-                printf("%c",vet[i]);
+            for (int j = 0; j < n; j++) {
+                printf("%c",vet[j]);
                 printf("\n");
             }
         }
