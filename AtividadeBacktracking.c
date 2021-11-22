@@ -4,13 +4,16 @@
 
 void imprimirCombinacoes_tarefa1(char* vet, int pos, int n);
 void imprimirCombinacoes_tarefa2(int* vet, int pos, int n, int* vetAux);
+void imprimirCombinacoes_tarefa3(int valor,int pos, int* vet,int* vetAux);
 
 int main(){
     char vet[3] = {'a','e','i'};
     int vet2[4] = {15,31,44,55};
     int vetAux[4] = {15,31,44,55};
+    int vet3[5] = {1,5,10,25,50};
+    int vetAux2[5] = {1,5,10,25,50};
 
-    int num, tam_n;
+    int num, tam_n,valor;
     printf("Você deseja visualizar qual tarefa?\nDigite 1, 2, 3 ou 4 para sair: ");
     
     while(num !=4){
@@ -32,6 +35,10 @@ int main(){
         break;
     
     case 3:
+        puts("Informe o valor desejado");
+        scanf("%d", &valor);
+
+        imprimirCombinacoes_tarefa3(valor,0,vet3,vetAux2);
         break;
     
     case 4:
@@ -90,6 +97,39 @@ void imprimirCombinacoes_tarefa2(int* vet, int pos, int n,int* vetAux){
         for (i = 0; i < 4; i++) {
             vet[pos] = vetAux[i];
             imprimirCombinacoes_tarefa2(vet,pos+1,n,vetAux);
+        }
+    }
+}
+
+void imprimirCombinacoes_tarefa3(int valor,int pos,int* vet,int* vetAux){
+    int i;
+    if (pos == 5){
+        int contadorSomaMoeda = 0;
+        int contador1 = 0;
+        int contador5 = 0;
+        int contador10 = 0;
+        int contador25 = 0;
+        int contador50 = 0;
+
+        for (i = 0; i < 5; i++) {
+            contadorSomaMoeda += vet[i];
+            if(vet[i] == 1){contador1++;}
+            else if(vet[i] == 5){contador5++;}
+            else if(vet[i] == 10){contador10++;}
+            else if(vet[i] == 25){contador25++;}
+            else{contador50++;}
+        }
+        if(contadorSomaMoeda == valor){
+            for (i = 0; i < 5; i++) {
+                printf("%d moedas de 1 centavo, %d moedas de 5 centavos, %d moedas de 10 centavo, %d moedas de 25 centavos, %d moedas de 50 centavos",contador1,contador5,contador10,contador25,contador50);
+            }
+            printf("\n");
+        }
+    }
+    else{
+        for (i = 0; i < 5; i++) {
+            vet[pos] = vetAux[i];
+            imprimirCombinacoes_tarefa3(valor,pos+1,vet,vetAux);
         }
     }
 }
