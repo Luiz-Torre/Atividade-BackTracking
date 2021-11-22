@@ -24,6 +24,7 @@ void imprimirCombinacoes(char* vet, int pos, int n){
             for (i = 0; i < n; i++) {
                 printf("%c",vet[i]);
             }
+            printf("\n");
         }
     }
     else{
