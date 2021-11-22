@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <math.h>
 
-void imprimirCombinacoes(char* vet, int pos, int n);
+void imprimirCombinacoes_tarefa1(char* vet, int pos, int n);
 
 int main(){
-    char vet[3] = {'a','e','i'};
+
     int num, tam_n;
-    printf("Você deseja visualizar qual tarefa?\nDigite 1, 2, 3 ou 4 para sair ");
+    printf("Você deseja visualizar qual tarefa?\nDigite 1, 2, 3 ou 4 para sair: ");
     
     while(num !=4){
     scanf("%d", &num);
@@ -15,12 +15,16 @@ int main(){
     switch (num)
     {
     case 1:
+        char vet[3] = {'a','e','i'};
+
         puts("Informe o tamanho do N desejado");
         scanf("%d", &tam_n);
 
-        imprimirCombinacoes(vet,0,tam_n);
+        imprimirCombinacoes_tarefa1(vet,0,tam_n);
         break;
     case 2:
+        int vet[4] = {15,31,55,44};
+
         break;
     
     case 3:
@@ -37,7 +41,7 @@ int main(){
     }
 }
 
-void imprimirCombinacoes(char* vet, int pos, int n){
+void imprimirCombinacoes_tarefa1(char* vet, int pos, int n){
     int i;
     if (pos == n){
         int contadorA = 0;
