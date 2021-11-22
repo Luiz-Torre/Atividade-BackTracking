@@ -3,9 +3,11 @@
 #include <math.h>
 
 void imprimirCombinacoes(char* vet, int pos, int n);
+void imprimirCombinacoesPares(char* vet, int pos, int n);
 
 int main(){
     char vet[3] = {'a','e','i'};
+    int vet2[4] = {15,31,44,55};
     int num, tam_n;
     printf("Você deseja visualizar qual tarefa?\nDigite 1, 2, 3 ou 4 para sair ");
     
@@ -63,4 +65,7 @@ void imprimirCombinacoes(char* vet, int pos, int n){
         vet[pos] = 'i';
         imprimirCombinacoes(vet,pos+1,n);
     }
+}
+void imprimirCombinacoesPares(char* vet, int pos, int n){
+    
 }
