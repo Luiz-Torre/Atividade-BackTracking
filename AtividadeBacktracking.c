@@ -81,13 +81,13 @@ void imprimirCombinacoes_tarefa2(int* vet, int pos, int n,int* vetAux){
         }
         if(contadorSoma%2 == 0){
             for (i = 0; i < n; i++) {
-                printf("%c",vet[i]);
+                printf("%d",vet[i]);
             }
             printf("\n");
         }
     }
     else{
-        for (i = 0; i < n; i++) {
+        for (i = 0; i < 4; i++) {
             vet[pos] = vetAux[i];
             imprimirCombinacoes_tarefa2(vet,pos+1,n,vetAux);
         }
