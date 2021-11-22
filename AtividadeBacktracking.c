@@ -6,6 +6,24 @@ void imprimirCombinacoes(char* vet, int pos, int n);
 
 int main(){
     char vet[3] = {'a','e','i'};
+    int num;
+    printf("Você deseja visualizar qual tarefa?\nDigite 1, 2 ou 3: ");
+    scanf("%d", &num);
+    switch (num)
+    {
+    case 1:
+        imprimirCombinacoes(vet,0,3);
+        break;
+    case 2:
+        break;
+    
+    case 3:
+        break;
+    default:
+        puts("Número invalido. Digite 1, 2 ou 3: ");
+        scanf("%d", &num);
+        break;
+    }
     imprimirCombinacoes(vet,0,3);
 }
 
