@@ -109,6 +109,7 @@ void imprimirCombinacoes_tarefa3(int valor,int pos,int* vet,int* vetAux,int* vet
 
         for (int j = 0; j < 5; ++j) {
             vetorFull[j] = 0;
+            
         }
         printf("\n");
     }
