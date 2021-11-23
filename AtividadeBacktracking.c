@@ -4,7 +4,7 @@
 
 void imprimirCombinacoes_tarefa1(char* vet, int pos, int n);
 void imprimirCombinacoes_tarefa2(int* vet, int pos, int n, int* vetAux);
-void imprimirCombinacoes_tarefa3(int valor,int* vet,int* vetorFull,int valorOrigin);
+void imprimirCombinacoes_tarefa3(int valor,int* vet,int* vetorFull,int i);
 
 int main(){
     char vet[3] = {'a','e','i'};
@@ -13,7 +13,6 @@ int main(){
     int vet3[5] = {1,5,10,25,50};
     int vetAux2[5] = {1,5,10,25,50};
     int vetorFull[5]={0,0,0,0,0};
-    int valorOrigin;
 
     int num, tam_n,valor;
     int soma = 0;
@@ -40,8 +39,7 @@ int main(){
             case 3:
                 puts("Informe o valor desejado");
                 scanf("%d", &valor);
-                valorOrigin = valor;
-                imprimirCombinacoes_tarefa3(valor,vet3,vetorFull,valorOrigin);
+                imprimirCombinacoes_tarefa3(valor,vet3,vetorFull,0);
                 break;
 
             case 4:
@@ -104,20 +102,17 @@ void imprimirCombinacoes_tarefa2(int* vet, int pos, int n,int* vetAux){
     }
 }
 
-void imprimirCombinacoes_tarefa3(int valor,int* vet,int* vetorFull,int valorOrigin){
-    int i;
+void imprimirCombinacoes_tarefa3(int valor,int* vet,int* vetorFull,int i){
     if (valor == 0){
-        if (((vetorFull[0]*1)+(vetorFull[1]*5)+(vetorFull[2]*10)+(vetorFull[3]*25)+(vetorFull[4]*50)) == valorOrigin){
             printf("%d moedas de 1 centavo, %d moedas de 5 centavos, %d moedas de 10 centavo, %d moedas de 25 centavos, %d moedas de 50 centavos\n",vetorFull[0],vetorFull[1],vetorFull[2],vetorFull[3],vetorFull[4]);
         }
-        for (int j = 0; j < 5; ++j) {
-            vetorFull[j] = 0;
-        }
-    }
-    for (int j = 0; j < 5; j++) {
-        if (valor - vet[j] >= 0){
+
+    for (int j = i; j < 5; j++) {
+        if ((valor - vet[j]) >= 0){
             vetorFull[j] += 1;
-            imprimirCombinacoes_tarefa3((valor - vet[j]),vet,vetorFull,valorOrigin);
+            imprimirCombinacoes_tarefa3((valor - vet[j]),vet,vetorFull,j);
+            vetorFull[j] -= 1;
+
         }
     }
 
