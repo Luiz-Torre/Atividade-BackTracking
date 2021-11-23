@@ -136,7 +136,16 @@ void imprimirCombinacoes_tarefa3(int valor,int pos,int* vet,int* vetAux,int* vet
 //        }
 //        if(contadorSomaMoeda == valor){
 //            printf("%d moedas de 1 centavo, %d moedas de 5 centavos, %d moedas de 10 centavo, %d moedas de 25 centavos, %d moedas de 50 centavos",contador1,contador5,contador10,contador25,contador50);
+//
+//            printf("\n");
+//        }
+//    }
+//    else{
+//        for (i = 0; i < 5; i++) {
+//            vet[pos] = vetAux[i];
+//            imprimirCombinacoes_tarefa3(valor,pos+1,vet,vetAux);
+//        }
+    }
 
 
 }
-
