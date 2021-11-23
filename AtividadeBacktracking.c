@@ -110,51 +110,19 @@ void imprimirCombinacoes_tarefa2(int* vet, int pos, int n,int* vetAux){
 
 void imprimirCombinacoes_tarefa3(int valor,int pos,int* vet,int* vetAux,int* vetorFull,int cont,int soma){
     int i;
-//    if (valor == 0){
-//            printf("%d moedas de 1 centavo, %d moedas de 5 centavos, %d moedas de 10 centavo, %d moedas de 25 centavos, %d moedas de 50 centavos",vetorFull[0],vetorFull[1],vetorFull[2],vetorFull[3],vetorFull[4]);
-//
-//        for (int j = 0; j < 5; ++j) {
-//            vetorFull[j] = 0;
-//        }
-//        soma = 0;
-//        printf("\n");
-//
-//    }
-//    for (int j = 0; j < 5; ++j) {
-//        if (valor - vet[j] >= 0 && soma <= cont){
-//            vetorFull[j] += 1;
-//            soma += vet[j];
-//            imprimirCombinacoes_tarefa3((valor - vet[j]),pos+1,vet,vetAux,vetorFull,cont,soma);
-//    }
-    if (pos == 5){
-        int contadorSomaMoeda = 0;
-        int contador1 = 0;
-        int contador5 = 0;
-        int contador10 = 0;
-        int contador25 = 0;
-        int contador50 = 0;
+    if (valor == 0){
+        printf("%d moedas de 1 centavo, %d moedas de 5 centavos, %d moedas de 10 centavo, %d moedas de 25 centavos, %d moedas de 50 centavos",vetorFull[0],vetorFull[1],vetorFull[2],vetorFull[3],vetorFull[4]);
 
-        for (i = 0; i < 5; i++) {
-            contadorSomaMoeda += vet[i];
-            if(vet[i] == 1){contador1++;}
-            else if(vet[i] == 5){contador5++;}
-            else if(vet[i] == 10){contador10++;}
-            else if(vet[i] == 25){contador25++;}
-            else{contador50++;}
+        for (int j = 0; j < 5; ++j) {
+            vetorFull[j] = 0;
+            
         }
-        if(contadorSomaMoeda == valor){
-            printf("%d moedas de 1 centavo, %d moedas de 5 centavos, %d moedas de 10 centavo, %d moedas de 25 centavos, %d moedas de 50 centavos",contador1,contador5,contador10,contador25,contador50);
-
-            printf("\n");
-        }
+        printf("\n");
     }
-    else{
-        for (i = 0; i < 5; i++) {
-            vet[pos] = vetAux[i];
-            imprimirCombinacoes_tarefa3(valor,pos+1,vet,vetAux,vetorFull,cont,soma);
-        }
+    for (int j = 0; j < 5; j++) {
+        if (valor - vet[j] >= 0){
+            vetorFull[j] += 1;
+            imprimirCombinacoes_tarefa3((valor - vet[j]),pos+1,vet,vetAux,vetorFull,cont,soma);
     }
-
-
-}
+}}
 
