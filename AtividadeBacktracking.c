@@ -4,7 +4,7 @@
 
 void imprimirCombinacoes_tarefa1(char* vet, int pos, int n);
 void imprimirCombinacoes_tarefa2(int* vet, int pos, int n, int* vetAux);
-void imprimirCombinacoes_tarefa3(int valor,int pos, int* vet,int* vetAux,int* vetorFull);
+void imprimirCombinacoes_tarefa3(int valor,int pos, int* vet,int* vetAux,int* vetorFull, int* aux);
 
 int main(){
     char vet[3] = {'a','e','i'};
@@ -13,6 +13,8 @@ int main(){
     int vet3[5] = {1,5,10,25,50};
     int vetAux2[5] = {1,5,10,25,50};
     int vetorFull[5]={0,0,0,0,0};
+    int *aux3 = NULL;
+    aux3 = malloc (1 * sizeof (int));
 
     int num, tam_n,valor;
     printf("Você deseja visualizar qual tarefa?\nDigite 1, 2, 3 ou 4 para sair: ");
@@ -39,7 +41,7 @@ int main(){
         puts("Informe o valor desejado");
         scanf("%d", &valor);
 
-        imprimirCombinacoes_tarefa3(valor,0,vet3,vetAux2,vetorFull);
+        imprimirCombinacoes_tarefa3(valor,0,vet3,vetAux2,vetorFull,aux3);
         break;
     
     case 4:
@@ -102,50 +104,37 @@ void imprimirCombinacoes_tarefa2(int* vet, int pos, int n,int* vetAux){
     }
 }
 
-void imprimirCombinacoes_tarefa3(int valor,int pos,int* vet,int* vetAux,int* vetorFull){
+void imprimirCombinacoes_tarefa3(int valor,int pos,int* vet,int* vetAux,int* vetorFull, int* aux){
     int i;
-    if (valor == 0){
-        printf("%d moedas de 1 centavo, %d moedas de 5 centavos, %d moedas de 10 centavo, %d moedas de 25 centavos, %d moedas de 50 centavos",vetorFull[0],vetorFull[1],vetorFull[2],vetorFull[3],vetorFull[4]);
+    for (int j = 0; j < 5; j++) {
+        if (valor - vet[j] > 0){
+            vetorFull[j] += 1;
+            *aux = 0;
+            imprimirCombinacoes_tarefa3((valor - vet[j]),pos+1,vet,vetAux,vetorFull, aux);
+    }
+        else if(valor - vet[j] == 0){
+            vetorFull[j] += 1;
+            *aux = 0;
 
+            imprimirCombinacoes_tarefa3((valor - vet[j]),pos+1,vet,vetAux,vetorFull, aux);
+        }
+        if(valor == 0){
+            *aux = 1;
+
+        }
+
+}
+
+    if (valor == 0 && *aux ==1){
+        printf("%d moedas de 1 centavo, %d moedas de 5 centavos, %d moedas de 10 centavo, %d moedas de 25 centavos, %d moedas de 50 centavos",vetorFull[0],vetorFull[1],vetorFull[2],vetorFull[3],vetorFull[4]);
         for (int j = 0; j < 5; ++j) {
             vetorFull[j] = 0;
             
         }
         printf("\n");
     }
-    for (int j = 0; j < 5; j++) {
-        if (valor - vet[j] >= 0){
-            vetorFull[j] += 1;
-            imprimirCombinacoes_tarefa3((valor - vet[j]),pos+1,vet,vetAux,vetorFull);
-    }
-//    if (pos == 5){
-//        int contadorSomaMoeda = 0;
-//        int contador1 = 0;
-//        int contador5 = 0;
-//        int contador10 = 0;
-//        int contador25 = 0;
-//        int contador50 = 0;
-//
-//        for (i = 0; i < 5; i++) {
-//            contadorSomaMoeda += vet[i];
-//            if(vet[i] == 1){contador1++;}
-//            else if(vet[i] == 5){contador5++;}
-//            else if(vet[i] == 10){contador10++;}
-//            else if(vet[i] == 25){contador25++;}
-//            else{contador50++;}
-//        }
-//        if(contadorSomaMoeda == valor){
-//            printf("%d moedas de 1 centavo, %d moedas de 5 centavos, %d moedas de 10 centavo, %d moedas de 25 centavos, %d moedas de 50 centavos",contador1,contador5,contador10,contador25,contador50);
-//
-//            printf("\n");
-//        }
-//    }
-//    else{
-//        for (i = 0; i < 5; i++) {
-//            vet[pos] = vetAux[i];
-//            imprimirCombinacoes_tarefa3(valor,pos+1,vet,vetAux);
-//        }
-    }
+    *aux = 0;
+
 
 
 }
