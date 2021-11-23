@@ -104,15 +104,17 @@ void imprimirCombinacoes_tarefa2(int* vet, int pos, int n,int* vetAux){
 
 void imprimirCombinacoes_tarefa3(int valor,int pos,int* vet,int* vetAux,int* vetorFull){
     int i;
-    if (valor == 0){
+    int aux = 1;
+    if (valor == 0 && aux == 1){
         printf("%d moedas de 1 centavo, %d moedas de 5 centavos, %d moedas de 10 centavo, %d moedas de 25 centavos, %d moedas de 50 centavos",vetorFull[0],vetorFull[1],vetorFull[2],vetorFull[3],vetorFull[4]);
 
         for (int j = 0; j < 5; ++j) {
             vetorFull[j] = 0;
         }
+        aux = 0;
         printf("\n");
     }
-    for (int j = 0; j < 5; ++j) {
+    for (int j = 0; j < 5; j++) {
         if (valor - vet[j] >= 0){
             vetorFull[j] += 1;
             imprimirCombinacoes_tarefa3((valor - vet[j]),pos+1,vet,vetAux,vetorFull);
