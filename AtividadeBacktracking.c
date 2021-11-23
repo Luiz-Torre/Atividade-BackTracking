@@ -10,7 +10,7 @@ int main(){
     char vet[3] = {'a','e','i'};
     int vet2[4] = {15,31,44,55};
     int vetAux[4] = {15,31,44,55};
-    int vet3[5] = {0,0,0,0,0};
+    int vet3[5] = {1,5,10,25,50};
     int vetAux2[5] = {1,5,10,25,50};
 
 
@@ -19,7 +19,7 @@ int main(){
     int valorOrigin;
     int soma = 0;
     printf("Você deseja visualizar qual tarefa?\nDigite 1, 2, 3 ou 4 para sair: ");
-
+    int* vetorFull;
 
     while(num !=4){
     scanf("%d", &num);
@@ -43,17 +43,8 @@ int main(){
         puts("Informe o valor desejado");
         scanf("%d", &valor);
         valorOrigin = valor;
-//            printf("%d",valor);
-//            printf("\n");
-            int* vetorFull = (int*) malloc(valor*sizeof(int ));
-//            printf("%d",(sizeof (vetorFull)));
-//            printf("\n");
-            for (int i = 0; i <= valor; ++i) {
-                vetorFull[i]  = i;
-            }
-//        for (int i = 0; i <= 10; ++i) {
-//            printf("%d ",vetorFull[i]);
-//        }
+        vetorFull = (int*) malloc(valor*sizeof(int ));
+
         imprimirCombinacoes_tarefa3(valor,0,vet3,vetAux2,vetorFull,valorOrigin,soma);
         break;
     
@@ -143,8 +134,8 @@ void imprimirCombinacoes_tarefa3(int valor,int pos,int* vet,int* vetAux,int* vet
         int contador25 = 0;
         int contador50 = 0;
 
-        for (i = 0; i <= valor; i++) {
-            contadorSomaMoeda += (vet[i]*i);
+        for (i = 0; i < 5; i++) {
+            contadorSomaMoeda += vet[i];
             if(vet[i] == 1){contador1++;}
             else if(vet[i] == 5){contador5++;}
             else if(vet[i] == 10){contador10++;}
@@ -158,8 +149,8 @@ void imprimirCombinacoes_tarefa3(int valor,int pos,int* vet,int* vetAux,int* vet
         }
     }
     else{
-        for (i = 0; i <= valor; i++) {
-            vet[pos] = vetorFull[i];
+        for (i = 0; i < 5; i++) {
+            vet[pos] = vetAux[i];
             imprimirCombinacoes_tarefa3(valor,pos+1,vet,vetAux,vetorFull,cont,soma);
         }
     }
